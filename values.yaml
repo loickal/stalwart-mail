@@ -34,7 +34,7 @@ ingress:
 
 traefik:
   enabled: false
-  #host: "mail.example.com"
+  hosts: []
   ports:
     http: websecure
     imaps: imaps

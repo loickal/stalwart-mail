@@ -41,6 +41,7 @@ Helm Chart for Stalwart Mail Server - Secure & Modern All-in-One Mail Server (IM
 | service.ports.submission | int | `587` |  |
 | service.type | string | `"NodePort"` |  |
 | traefik.enabled | bool | `false` |  |
+| traefik.hosts | list | `[]` |  |
 | traefik.ports.http | string | `"websecure"` |  |
 | traefik.ports.imaps | string | `"imaps"` |  |
 | traefik.ports.smtps | string | `"smtps"` |  |
