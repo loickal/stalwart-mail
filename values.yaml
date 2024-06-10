@@ -15,9 +15,18 @@ service:
     imaps: 993
     sieve: 4190
 
+## Persist configuration to a persistent volume
 persistence:
-  enabled: true
-  storageClass: 'standard'
+  # persistence.enabled - Should disk persistence be enabled
+  enabled: false
+  ## If defined, storageClassName: <storageClass>
+  ## If set to "-", storageClassName: "", which disables dynamic provisioning
+  ## If undefined (the default) or set to null, no storageClassName spec is
+  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+  ##   GKE, AWS & OpenStack)
+  ##
+  existingClaim: ''
+  storageClass: ''
   accessMode: ReadWriteOnce
   size: 10Gi
   mountPath: /opt/stalwart-mail

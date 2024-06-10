@@ -1,23 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "stalwart-mail.fullname" . }}
-  labels: 
-    {{- include "stalwart-mail.labels" . | nindent 4 }}
+  name: { { include "stalwart-mail.fullname" . } }
+  labels: { { - include "stalwart-mail.labels" . | nindent 4 } }
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: { { .Values.replicaCount } }
   selector:
-    matchLabels: 
-      {{- include "stalwart-mail.selectorLabels" . | nindent 6 }}
+    matchLabels: { { - include "stalwart-mail.selectorLabels" . | nindent 6 } }
   template:
     metadata:
-      labels: 
-        {{- include "stalwart-mail.selectorLabels" . | nindent 8 }}
+      labels: { { - include "stalwart-mail.selectorLabels" . | nindent 8 } }
     spec:
       containers:
         - name: stalwart-mail
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          image: '{{ .Values.image.repository }}:{{ .Values.image.tag }}'
+          imagePullPolicy: { { .Values.image.pullPolicy } }
           ports:
             - containerPort: 8080
             - containerPort: 443
@@ -29,8 +26,8 @@ spec:
             - containerPort: 4190
           volumeMounts:
             - name: stalwart-volume
-              mountPath: {{ .Values.persistence.mountPath }}
+              mountPath: { { .Values.persistence.mountPath } }
       volumes:
         - name: stalwart-volume
           persistentVolumeClaim:
-            claimName: {{ include "stalwart-mail.fullname" . }}
+            claimName: { { .Values.persistence.existingClaim | default (include "stalwart-mail.fullname" .) } }

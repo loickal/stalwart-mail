@@ -1,6 +1,6 @@
 # stalwart-mail
 
-![Version: 0.0.3](https://img.shields.io/badge/Version-0.0.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.8.1](https://img.shields.io/badge/AppVersion-0.8.1-informational?style=flat-square)
+![Version: 0.0.5](https://img.shields.io/badge/Version-0.0.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.8.1](https://img.shields.io/badge/AppVersion-0.8.1-informational?style=flat-square)
 
 Helm Chart for Stalwart Mail Server - Secure & Modern All-in-One Mail Server (IMAP, JMAP, SMTP)
 
@@ -18,10 +18,11 @@ Helm Chart for Stalwart Mail Server - Secure & Modern All-in-One Mail Server (IM
 | image.repository | string | `"stalwartlabs/mail-server"` |  |
 | image.tag | string | `""` |  |
 | persistence.accessMode | string | `"ReadWriteOnce"` |  |
-| persistence.enabled | bool | `true` |  |
+| persistence.enabled | bool | `false` |  |
+| persistence.existingClaim | string | `""` |  |
 | persistence.mountPath | string | `"/opt/stalwart-mail"` |  |
 | persistence.size | string | `"10Gi"` |  |
-| persistence.storageClass | string | `"standard"` |  |
+| persistence.storageClass | string | `""` |  |
 | replicaCount | int | `1` |  |
 | service.ports.http | int | `8080` |  |
 | service.ports.https | int | `443` |  |
