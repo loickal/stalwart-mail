@@ -9,15 +9,13 @@ spec:
   entryPoints:
     - {{ $entryport }}
   routes:
-    {{- range $host := $.Values.traefik.hosts }}
+    {{- range $index, $host := $.Values.traefik.hosts }}
     - match: HostSNI(`{{ $host }}`)
       services:
         - name: {{ include "stalwart-mail.fullname" $ }}
           port: {{ $port }}
-          proxyProtocol:
-            version: 2
     {{- end }}
   tls:
-    passthrough: true
+    secretName: {{ $.Values.traefik.tlsSecretName }}
 {{- end }}
 {{- end }}
