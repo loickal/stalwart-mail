@@ -9,7 +9,7 @@ spec:
   entryPoints:
     - {{ $entryport }}
   routes:
-    {{- range $host := .Values.traefik.hosts }}
+    {{- range $host := $.Values.traefik.hosts }}
     - match: HostSNI(`{{ $host }}`)
       services:
         - name: {{ include "stalwart-mail.fullname" $ }}
